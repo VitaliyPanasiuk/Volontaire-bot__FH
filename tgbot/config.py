@@ -44,7 +44,8 @@ def load_config(path: str = None):
             host=env.str('DB_HOST'),
             password=env.str('DB_PASS'),
             user=env.str('DB_USER'),
-            database=env.str('DB_NAME')
+            database=env.str('DB_NAME'),
         ),
         misc=Miscellaneous()
     )
+DB_URI = 'postgres://rlfdvcditosxia:550d193d8fb7962cb85178198e5f9612dbf11e12a08d2a0731adbfffb1943561@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/d9s51kmjiegnth'
