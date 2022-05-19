@@ -6,7 +6,21 @@ from aiogram.dispatcher.fsm.storage.memory import MemoryStorage
 
 from tgbot.config import load_config
 from tgbot.handlers.admin import admin_router
+from tgbot.handlers.get_links import get_links_router
 from tgbot.handlers.user import user_router
+from tgbot.handlers.make_post import make_post_router
+from tgbot.handlers.help_buttons.home_but import home_router
+from tgbot.handlers.help_buttons.back import back_router
+from tgbot.handlers.help_buttons.clothes import clothes_router
+from tgbot.handlers.help_buttons.donate import donate_router
+from tgbot.handlers.help_buttons.essentials import essentials_router
+from tgbot.handlers.help_buttons.food import food_router
+from tgbot.handlers.help_buttons.kids_products import kids_products_router
+from tgbot.handlers.help_buttons.medical_care import medical_care_router
+from tgbot.handlers.help_buttons.other import other_router
+from tgbot.handlers.help_buttons.produtcs_for_pets import products_for_pets_router
+from tgbot.handlers.help_buttons.psychological_help import psychological_help_router
+from tgbot.handlers.help_buttons.transport import transport_router
 from tgbot.middlewares.config import ConfigMiddleware
 from tgbot.services import broadcaster
 
@@ -40,6 +54,20 @@ async def main():
     for router in [
         admin_router,
         user_router,
+        home_router,
+        get_links_router,
+        back_router,
+        clothes_router,
+        donate_router,
+        essentials_router,
+        food_router,
+        kids_products_router,
+        medical_care_router,
+        other_router,
+        products_for_pets_router,
+        psychological_help_router,
+        transport_router,
+        make_post_router,
     ]:
         dp.include_router(router)
 

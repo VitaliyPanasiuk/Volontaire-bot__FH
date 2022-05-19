@@ -15,7 +15,8 @@ async def postgre_start():
         id text primary key,
         name text,
         lang text default 'uk', 
-        status text, 
+        status text,
+        action text, 
         phone text, 
         acccepted text[]
         )''')
@@ -27,7 +28,8 @@ async def postgre_start():
         amountbed text,
         timeforlive text,
         pets boolean,
-        comment text
+        comment text,
+        img text
         )''')
     cur.execute('''CREATE TABLE IF NOT EXISTS postsFood(
         id serial primary key,

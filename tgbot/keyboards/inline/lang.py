@@ -15,3 +15,9 @@ lang.add(types.InlineKeyboardButton(
     text="русский",
     callback_data="ru")
 )
+
+phone = ReplyKeyboardBuilder()
+phone.add(types.KeyboardButton(
+    text="send_contact",
+    request_contact=True)
+)
