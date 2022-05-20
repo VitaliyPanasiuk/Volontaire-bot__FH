@@ -16,6 +16,8 @@ class MakePost(StatesGroup):
     
 class getNumber(StatesGroup):
     num = State()
+    num2 = State()
+    num3 = State()
     
 class redactPost(StatesGroup):
     act = State()

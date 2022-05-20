@@ -32,8 +32,8 @@ from tgbot.db import postgre_users_db
 logger = logging.getLogger(__name__)
 
 
-async def on_startup(bot: Bot, admin_ids: list[int]):
-    await broadcaster.broadcast(bot, admin_ids, "Бот був запущений")
+# async def on_startup(bot: Bot, admin_ids: list[int]):
+#     await broadcaster.broadcast(bot, admin_ids, "Бот був запущений")
 
 
 def register_global_middlewares(dp: Dispatcher, config):
@@ -77,7 +77,7 @@ async def main():
 
     register_global_middlewares(dp, config)
 
-    await on_startup(bot, config.tg_bot.admin_ids)
+    # await on_startup(bot, config.tg_bot.admin_ids)
     await postgre_users_db.postgre_start()
     await dp.start_polling(bot)
 

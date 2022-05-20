@@ -9,7 +9,7 @@ from tgbot.config import  DB_URI
 async def make_post_home(userid, type, geo,amountbed,timeforlive,pets,comment,img,phone):
     base = psycopg2.connect(DB_URI,sslmode="require")
     cur = base.cursor()
-    data = (userid, type, geo,amountbed,timeforlive,pets,comment,img,phone)
+    data = (userid, type, geo,amountbed,timeforlive,pets,comment,img,phone,)
     print(data)
     cur.execute('INSERT INTO postshome (userid, type, geo,amountbed,timeforlive,pets,comment,img,phone)  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)', data)
     

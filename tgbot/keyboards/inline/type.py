@@ -14,20 +14,20 @@ type_en.add(types.InlineKeyboardButton(
 
 type_ru = InlineKeyboardBuilder()
 type_ru.add(types.InlineKeyboardButton(
-    text="volounter",
+    text="волонтёр",
     callback_data="volounter")
 )
 type_ru.add(types.InlineKeyboardButton(
-    text="needy",
+    text="нуждающийся",
     callback_data="needy")
 )
 
 type_uk = InlineKeyboardBuilder()
 type_uk.add(types.InlineKeyboardButton(
-    text="volounter",
+    text="волонтер",
     callback_data="volounter")
 )
 type_uk.add(types.InlineKeyboardButton(
-    text="needy",
+    text="потребуючий",
     callback_data="needy")
 )
