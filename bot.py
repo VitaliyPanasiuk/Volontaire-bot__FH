@@ -9,6 +9,8 @@ from tgbot.handlers.admin import admin_router
 from tgbot.handlers.get_links import get_links_router
 from tgbot.handlers.user import user_router
 from tgbot.handlers.make_post import make_post_router
+from tgbot.handlers.showposts import show_posts_router
+from tgbot.handlers.editpost import edit_post_router
 from tgbot.handlers.help_buttons.home_but import home_router
 from tgbot.handlers.help_buttons.back import back_router
 from tgbot.handlers.help_buttons.clothes import clothes_router
@@ -68,6 +70,8 @@ async def main():
         psychological_help_router,
         transport_router,
         make_post_router,
+        show_posts_router,
+        edit_post_router,
     ]:
         dp.include_router(router)
 

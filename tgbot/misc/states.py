@@ -17,3 +17,16 @@ class MakePost(StatesGroup):
 class getNumber(StatesGroup):
     num = State()
     
+class redactPost(StatesGroup):
+    act = State()
+    postid = State()
+    postid2 = State()
+    amountbed = State()
+    time_for_live = State()
+    pets = State()
+    comment = State()
+    type = State()
+    helptype = State()
+    clotype = State()
+    closize = State()
+    
