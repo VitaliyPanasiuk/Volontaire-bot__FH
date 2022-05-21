@@ -20,19 +20,8 @@ async def postgre_start():
         phone text, 
         acccepted text[]
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsHome(
-        id serial primary key,
-        userid text references users(id),
-        type text,
-        geo text,
-        amountbed text,
-        timeforlive text,
-        pets boolean,
-        comment text,
-        img text,
-        phone text
-        )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsFood(
+    cur.execute('CREATE TABLE IF NOT EXISTS postshome(id serial primary key,userid text references users(id),type text,geo text,amountbed text,timeforlive text,pets boolean,comment text,img text,phone text)')
+    cur.execute('''CREATE TABLE IF NOT EXISTS postsfood(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -41,7 +30,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsMed(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postsmed(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -50,7 +39,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsTransport(
+    cur.execute('''CREATE TABLE IF NOT EXISTS poststransport(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -58,7 +47,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsKids(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postskids(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -67,7 +56,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsPets(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postspets(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -76,7 +65,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsClothes(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postsclothes(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -86,7 +75,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsFirsthelp(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postsfirsthelp(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -95,7 +84,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsPsyhologyk(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postspsyhologyk(
         id serial primary key,
         userid text references users(id),
         type text,
@@ -104,7 +93,7 @@ async def postgre_start():
         comment text,
         phone text
         )''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS postsOther(
+    cur.execute('''CREATE TABLE IF NOT EXISTS postsother(
         id serial primary key,
         userid text references users(id),
         type text,

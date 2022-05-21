@@ -38,6 +38,7 @@ def get_post(userid):
     data = (action,userid)
     cur.execute(sql.SQL('''SELECT * FROM {table} WHERE type = %s''').format(table = sql.Identifier(action_name)),(types,))
     posts = cur.fetchall()
+    
     base.commit()
     cur.close()
     base.close()
@@ -53,6 +54,7 @@ def get_acccepted(userid):
     data = (action,userid)
     cur.execute(sql.SQL('''SELECT * FROM users WHERE id = %s'''),(userid,))
     user = cur.fetchall()
+    print(user)
     base.commit()
     cur.close()
     base.close()

@@ -16,6 +16,7 @@ from tgbot.misc.auf_status import auf_status
 from tgbot.misc.get_lang import get_lang
 from tgbot.misc.get_action import get_action
 from tgbot.misc.get_type import get_type
+from tgbot.misc.get_phone import get_phone
 from aiogram.dispatcher.fsm.context import FSMContext
 from aiogram.dispatcher.fsm.state import State, StatesGroup
 from tgbot.misc.states import MakePost
@@ -136,40 +137,79 @@ async def get_geo2(message: types.Message, state = FSMContext):
     cords = str(message.location.latitude) + ' ' + str(message.location.longitude)
     await state.update_data(geo=cords) 
     await bot.send_message(userid,cords)
+    type_user = get_type(userid)
     if answer == 'home':
-        await bot.send_message(userid,make_post[lang][1],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.amountbed)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][1],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.amountbed)
+        else:
+            await bot.send_message(userid,make_post[lang][11],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.amountbed)
     elif answer == 'food':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'medical care':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'essentials':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'psychological help':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'kids products':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'transport':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'products for pets':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'other':
-        await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][8],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
+        else:
+            await bot.send_message(userid,make_post[lang][14],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
     elif answer == 'clothes':
-        await bot.send_message(userid,make_post[lang][9],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.clotype)
+        if type_user == 'volounter':
+            await bot.send_message(userid,make_post[lang][9],reply_markup=types.ReplyKeyboardRemove()) 
+            await state.set_state(MakePost.helptype)
 
     
 @make_post_router.message(state = MakePost.clotype)
 async def get_clotype(message: types.Message, state = FSMContext):
+    type_user = get_type(userid)
     userid = message.from_user.id
     lang = await get_lang(userid)
     await state.update_data(clotype=message.text)
@@ -198,21 +238,33 @@ async def get_helptype(message: types.Message, state = FSMContext):
 async def get_amount_bed(message: types.Message, state = FSMContext):
     userid = message.from_user.id
     lang = await get_lang(userid)
+    type_user = get_type(userid)
     try:
         await state.update_data(amountbed=int(message.text))
     except:
         await bot.send_message(userid,make_post[lang][2],reply_markup=types.ReplyKeyboardRemove())
         return
     await state.set_state(MakePost.time_for_live)
-    await bot.send_message(userid,make_post[lang][3],reply_markup=types.ReplyKeyboardRemove())    
+    if type_user == 'volounter':
+        await bot.send_message(userid,make_post[lang][3],reply_markup=types.ReplyKeyboardRemove()) 
+        await state.set_state(MakePost.helptype)
+    else:
+        await bot.send_message(userid,make_post[lang][12],reply_markup=types.ReplyKeyboardRemove()) 
+        await state.set_state(MakePost.helptype)    
     
 @make_post_router.message(state = MakePost.time_for_live)
 async def get_time(message: types.Message, state = FSMContext):
     userid = message.from_user.id
     lang = await get_lang(userid)
+    type_user = get_type(userid)
     await state.update_data(time_for_live=message.text)
     bool_answers = bool_answer(lang)
-    await bot.send_message(userid,make_post[lang][4],reply_markup=bool_answers.as_markup(resize_keyboard=True))
+    if type_user == 'volounter':
+        await bot.send_message(userid,make_post[lang][4],reply_markup=types.ReplyKeyboardRemove()) 
+        await state.set_state(MakePost.helptype)
+    else:
+        await bot.send_message(userid,make_post[lang][13],reply_markup=types.ReplyKeyboardRemove()) 
+        await state.set_state(MakePost.helptype)
     await state.set_state(MakePost.pets)
     
        
@@ -253,66 +305,65 @@ async def get_comment(msg: types.Message, state = FSMContext):
     answer = get_action(userid)
     lang = await get_lang(userid)
     await state.update_data(comment = msg.text)
-    print('ph')
-    print(msg.contact.phone_number)
-    
+    phone = get_phone(userid)
+    help_but = help_buttons(lang)
     if answer == 'home':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_home(userid,type,user_data['geo'],user_data['amountbed'],user_data['time_for_live'],user_data['pets'],user_data['comment'],user_data['photo'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_home(userid,type,user_data['geo'],user_data['amountbed'],user_data['time_for_live'],user_data['pets'],user_data['comment'],user_data['photo'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'food':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_home(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_home(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'medical care':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_medical_care(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_medical_care(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'clothes':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_clothes(userid,type,user_data['geo'],user_data['clotype'],user_data['closize'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_clothes(userid,type,user_data['geo'],user_data['clotype'],user_data['closize'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'essentials':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_first_help(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_first_help(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'kids products':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_kids(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_kids(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'other':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_other(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_other(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'products for pets':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_pets(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_pets(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'psychological help':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_psy(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_psy(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'transport':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_transport(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],str(msg.contact.phone_number))
-        await bot.send_message(userid,make_post[lang][7],reply_markup=types.ReplyKeyboardRemove()) 
+        await posts_db.make_post_transport(userid,type,user_data['geo'],user_data['helptype'],user_data['comment'],phone)
+        await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()

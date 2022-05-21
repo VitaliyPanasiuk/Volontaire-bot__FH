@@ -27,7 +27,7 @@ async def user_start(callback_query: types.CallbackQuery):
     await user_update.update_action(userid, 'home')
     
     lang = await get_lang(userid)
-    choice_but = choice_buttons_home(lang)
+    choice_but = choice_buttons_home(lang,userid)
     
     await bot.send_message(userid, phrases[lang]['after_type'], reply_markup=choice_but.as_markup())
     

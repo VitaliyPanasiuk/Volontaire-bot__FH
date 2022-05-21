@@ -9,8 +9,8 @@ from tgbot.config import  DB_URI
 async def reg_user(userid, name,lang,phone):
     base = psycopg2.connect(DB_URI,sslmode="require")
     cur = base.cursor()
-    data = (userid, name,lang,phone)
-    cur.execute('INSERT INTO users (id, name,lang,phone)  VALUES (%s,%s,%s,%s)', data)
+    data = (userid, name,lang,phone,{})
+    cur.execute('INSERT INTO users (id, name,lang,phone,acccepted)  VALUES (%s,%s,%s,%s,%s)', data)
     
     base.commit()
     cur.close()

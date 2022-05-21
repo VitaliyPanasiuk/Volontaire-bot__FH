@@ -16,7 +16,7 @@ phrases = {
         'back': 'Back',
         'after_type': 'Choose what you want to do',
         'make post': 'Make post',
-        'show posts': 'Show posts',
+        'show posts': 'Show request',
         'edit post': 'Edit post',
         'postig sites': 'Sites for finding or placing housing',
         'psysites': 'Other resources for psychological help',
@@ -24,6 +24,7 @@ phrases = {
         'liqpay':'Fund for helping the needy',
         'army':'Army Support Fund',
         'runner':'Refugee Support Fund',
+        
     },
     'ru' : {
         'volounter': 'Волонтёр',
@@ -42,7 +43,7 @@ phrases = {
         'back': 'Назад',
         'after_type': 'Выберите что вы хотите сделать',
         'make post': 'Создать пост',
-        'show posts': 'Показаь посты',
+        'show posts': 'Показаь запросы',
         'edit post': 'Редактировать мои посты',
         'postig sites': 'Сайты для поиска или размещения жилья',
         'psysites': 'Другие ресурсы для психологической помощи',
@@ -50,6 +51,7 @@ phrases = {
         'liqpay':'Фонд для помощи нуждающимся',
         'army':'Фонд для поддержки армии',
         'runner':'Фонд поддержки беженцев',
+        
     },
     'uk' : {
         'volounter': 'Волонтер',
@@ -67,16 +69,34 @@ phrases = {
         'other': 'Інше',
         'back': 'Назад',
         'after_type': 'Виберіть, що ви хочете зробити',
-        'make post': 'Створити пропозіцію',
+        'make post': 'Створити пост',
         'show posts': 'Переглянути запити',
-        'edit post': 'Редагувати мою пропозицію',
+        'edit post': 'Редагувати мої пости',
         'postig sites': 'Сайти для пошуку або розміщення житла',
         'psysites': 'Інші ресурси для отримання психологічної допомоги',
         'transportsites': 'Сайти для пошуку транспорту',
         'liqpay':'Фонд для допомоги потребуючим',
         'army':'Фонд для підтримки армії',
         'runner':'Фонд для підтримки біженців',
+        
     },
+}
+buttons_neddy = {
+    'en':{
+        'make post': 'Make request',
+        'show posts': 'Show posts',
+        'edit post': 'Edit request',
+    },
+    'ru':{
+        'make post': 'Создать запрос',
+        'show posts': 'Показать посты',
+        'edit post': 'Редактировать запрос',
+    },
+    'uk':{
+        'make post': 'Створити запит',
+        'show posts': 'Показати пости',
+        'edit post': 'Редагувати запит',
+    }
 }
 regions ={
     'en' : (
@@ -185,6 +205,10 @@ make_post = {
         'What can you provide',
         'Write the type of clothing',
         'Write the size of the clothes',
+        'How many beds do you need',
+        'How long do you need housing',
+        'Animals will be with you',
+        'What do you need',
    ),
    'ru' : (
         'Выберите регион',
@@ -198,6 +222,10 @@ make_post = {
         'Что вы можете предоставить',
         'Напишите тип одежды',
         'Напишите размер одежды',
+        'В скольки спальных местах вы нуждаетесь',
+        'В какой промежуток ввремени вы нуждаетесь в жилье',
+        'С вами будут животные',
+        'В чем вы нуждаетесь',
     ),
    'uk':(
         'Виберіть регіон',
@@ -211,6 +239,10 @@ make_post = {
         'Що ви можете надати',
         'Напишіть тип одягу',
         'Напишіть розмір одягу',
+        'Скільки спальних місць ви потребуєте',
+        'У який проміжок часу ви потребуєте житла',
+        'З вами будуть тварини',
+        'Чого ви потребуєте',
     ) 
 }
 showPost = {
