@@ -209,14 +209,14 @@ async def get_geo2(message: types.Message, state = FSMContext):
     
 @make_post_router.message(state = MakePost.clotype)
 async def get_clotype(message: types.Message, state = FSMContext):
-    type_user = get_type(userid)
     userid = message.from_user.id
+    type_user = get_type(userid)
     lang = await get_lang(userid)
     await state.update_data(clotype=message.text)
     await state.set_state(MakePost.closize)
     await bot.send_message(userid,make_post[lang][10],reply_markup=types.ReplyKeyboardRemove())
     
-make_post_router.message(state = MakePost.closize)
+@make_post_router.message(state = MakePost.closize)
 async def get_closize(message: types.Message, state = FSMContext):
     userid = message.from_user.id
     lang = await get_lang(userid)
