@@ -70,7 +70,7 @@ def get_post_edit(userid):
         action_name = 'postspsyhologyk'
     elif action == 'other':
         action_name = 'postsother'
-    cur.execute(sql.SQL('''SELECT * FROM {table}''').format(table = sql.Identifier(action_name)))
+    cur.execute(sql.SQL('''SELECT * FROM {table} WHERE type = %s''').format(table = sql.Identifier(action_name)),(types,))
     posts = cur.fetchall()
     
     base.commit()
