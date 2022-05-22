@@ -173,7 +173,6 @@ async def get_geo2(message: types.Message, state = FSMContext):
     answer = get_action(userid)  
     cords = str(message.location.latitude) + ' ' + str(message.location.longitude)
     await state.update_data(geo=cords) 
-    await bot.send_message(userid,cords)
     type_user = get_type(userid)
     if answer == 'home':
         if type_user == 'volounter':
@@ -275,47 +274,42 @@ async def get_amount_bed(message: types.Message, state = FSMContext):
     userid = message.from_user.id
     lang = await get_lang(userid)
     type_user = get_type(userid)
-    try:
-        await state.update_data(amountbed=int(message.text))
-    except:
-        await bot.send_message(userid,make_post[lang][2],reply_markup=types.ReplyKeyboardRemove())
-        return
-    await state.set_state(MakePost.time_for_live)
+    await state.update_data(amountbed=message.text)
     if type_user == 'volounter':
         await bot.send_message(userid,make_post[lang][3],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        await state.set_state(MakePost.time_for_live)
     else:
         await bot.send_message(userid,make_post[lang][12],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)    
+        await state.set_state(MakePost.time_for_live)    
     
 @make_post_router.message(state = MakePost.time_for_live)
 async def get_time(message: types.Message, state = FSMContext):
     userid = message.from_user.id
-    lang = await get_lang(userid)
+    language = await get_lang(userid)
     type_user = get_type(userid)
+    bool_answers = bool_answer(language)
     await state.update_data(time_for_live=message.text)
-    bool_answers = bool_answer(lang)
+    bool_answers = bool_answer(language)
     if type_user == 'volounter':
-        await bot.send_message(userid,make_post[lang][4],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
+        await bot.send_message(userid,make_post[language][4],reply_markup=bool_answers.as_markup(resize_keyboard=True)) 
+        await state.set_state(MakePost.pets)
     else:
-        await bot.send_message(userid,make_post[lang][13],reply_markup=types.ReplyKeyboardRemove()) 
-        await state.set_state(MakePost.helptype)
-    await state.set_state(MakePost.pets)
+        await bot.send_message(userid,make_post[language][13],reply_markup=bool_answers.as_markup(resize_keyboard=True))
+        await state.set_state(MakePost.pets)
     
        
     
 @make_post_router.message(state = MakePost.pets)
 async def get_pets(message: types.Message, state = FSMContext):
     userid = message.from_user.id
-    lang = await get_lang(userid)
-    if message.text == 'Да':
+    language = await get_lang(userid)
+    if message.text == 'Да' or message.text == 'Yes' or message.text == 'Так':
         answ = True
     else:
         answ = False
     await state.update_data(pets=answ)
-    await bot.send_message(userid,make_post[lang][5],reply_markup=types.ReplyKeyboardRemove())
-    print(make_post[lang][5])
+    await bot.send_message(userid,make_post[language][5],reply_markup=types.ReplyKeyboardRemove())
+    print(make_post[language][5])
     await state.set_state(MakePost.photo)
     
 

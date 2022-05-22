@@ -15,9 +15,9 @@ phrases = {
         'other': 'Other',
         'back': 'Back',
         'after_type': 'Choose what you want to do',
-        'make post': 'Make post',
-        'show posts': 'Show request',
-        'edit post': 'Edit post',
+        'make post': 'Create an offer',
+        'show posts': 'Show requests',
+        'edit post': 'Edit my offers',
         'postig sites': 'Sites for finding or placing housing',
         'psysites': 'Other resources for psychological help',
         'transportsites': 'Sites for finding transport',
@@ -42,9 +42,9 @@ phrases = {
         'other': 'Другое',
         'back': 'Назад',
         'after_type': 'Выберите что вы хотите сделать',
-        'make post': 'Создать пост',
+        'make post': 'Создать предложение',
         'show posts': 'Показаь запросы',
-        'edit post': 'Редактировать мои посты',
+        'edit post': 'Редактировать мои предложения',
         'postig sites': 'Сайты для поиска или размещения жилья',
         'psysites': 'Другие ресурсы для психологической помощи',
         'transportsites': 'Сайты для поиска транспорта',
@@ -69,9 +69,9 @@ phrases = {
         'other': 'Інше',
         'back': 'Назад',
         'after_type': 'Виберіть, що ви хочете зробити',
-        'make post': 'Створити пост',
+        'make post': 'Створити пропозицію',
         'show posts': 'Переглянути запити',
-        'edit post': 'Редагувати мої пости',
+        'edit post': 'Редагувати мою пропозицію',
         'postig sites': 'Сайти для пошуку або розміщення житла',
         'psysites': 'Інші ресурси для отримання психологічної допомоги',
         'transportsites': 'Сайти для пошуку транспорту',
@@ -84,17 +84,17 @@ phrases = {
 buttons_neddy = {
     'en':{
         'make post': 'Make request',
-        'show posts': 'Show posts',
+        'show posts': 'Show offers',
         'edit post': 'Edit request',
     },
     'ru':{
         'make post': 'Создать запрос',
-        'show posts': 'Показать посты',
+        'show posts': 'Показать предложения',
         'edit post': 'Редактировать запрос',
     },
     'uk':{
         'make post': 'Створити запит',
-        'show posts': 'Показати пости',
+        'show posts': 'Переглянути пропозиції',
         'edit post': 'Редагувати запит',
     }
 }
@@ -189,7 +189,7 @@ boll_answer = {
     ),
     'uk' : (
         'Так',
-        'НЫ',
+        'Ні',
     )
 }
 make_post = {

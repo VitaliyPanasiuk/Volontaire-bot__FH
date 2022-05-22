@@ -301,11 +301,7 @@ async def get_amount_bed(message: types.Message, state = FSMContext):
     type_user = get_type(userid)
     answer = get_action(userid)
     language = await get_lang(userid)
-    try:
-        await state.update_data(amountbed=int(message.text))
-    except:
-        await bot.send_message(userid,make_post[language][2],reply_markup=types.ReplyKeyboardRemove())
-        return
+    await state.update_data(amountbed=message.text)
     await state.set_state(redactPost.time_for_live)
     if type_user == 'volounter':
         await bot.send_message(userid,make_post[language][3],reply_markup=types.ReplyKeyboardRemove())    
