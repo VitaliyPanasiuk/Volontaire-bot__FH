@@ -48,8 +48,10 @@ def choice_buttons_home(lang,userid):
 def choice_buttons(lang,userid):
     answer = get_type(userid)
     action = get_action(userid)
+    print(answer)
+    choice_buttons = InlineKeyboardBuilder()
     if answer == 'volounter':
-        choice_buttons = InlineKeyboardBuilder()
+        
         keys = [*phrases[lang]][15:18]
         k = 0
         for i in keys:
@@ -63,7 +65,6 @@ def choice_buttons(lang,userid):
                 callback_data='helpbutton')
             )
     elif answer == 'needy':
-        choice_buttons = InlineKeyboardBuilder()
         keys = [*buttons_neddy[lang]]
         k = 0
         print(buttons_neddy[lang])

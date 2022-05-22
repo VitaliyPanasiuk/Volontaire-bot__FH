@@ -10,7 +10,7 @@ def get_action(userid):
     data = (userid,)
     cur.execute('SELECT * FROM users WHERE id = %s',data)
     user = cur.fetchone()
-    lang = user[6]
+    lang = user[4]
     base.commit()
     cur.close()
     base.close()

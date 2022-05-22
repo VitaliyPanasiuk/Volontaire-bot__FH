@@ -3,7 +3,7 @@ from aiogram import Bot, types
 
 from tgbot.misc.texts import regions
 
-def choice_edit_action(lang):
+def choice_edit_action():
     region_buttons = ReplyKeyboardBuilder()
     region_buttons.add(
         types.KeyboardButton(text="Edit")

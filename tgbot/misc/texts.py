@@ -24,7 +24,7 @@ phrases = {
         'liqpay':'Fund for helping the needy',
         'army':'Army Support Fund',
         'runner':'Refugee Support Fund',
-        
+        'liq':'choose'
     },
     'ru' : {
         'volounter': 'Волонтёр',
@@ -51,7 +51,7 @@ phrases = {
         'liqpay':'Фонд для помощи нуждающимся',
         'army':'Фонд для поддержки армии',
         'runner':'Фонд поддержки беженцев',
-        
+        'liq':'выберите'
     },
     'uk' : {
         'volounter': 'Волонтер',
@@ -78,7 +78,7 @@ phrases = {
         'liqpay':'Фонд для допомоги потребуючим',
         'army':'Фонд для підтримки армії',
         'runner':'Фонд для підтримки біженців',
-        
+        'liq':'вибрати'
     },
 }
 buttons_neddy = {

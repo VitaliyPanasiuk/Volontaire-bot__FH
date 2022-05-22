@@ -10,7 +10,7 @@ def get_phone(userid):
     data = (userid,)
     cur.execute('SELECT * FROM users WHERE id = %s',data)
     user = cur.fetchone()
-    lang = user[3]
+    lang = user[5]
     base.commit()
     cur.close()
     base.close()

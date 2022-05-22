@@ -9,6 +9,7 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder,InlineKeyboardButton,Inl
 from tgbot.db import user_update
 from tgbot.misc.auf_status import auf_status
 from tgbot.misc.get_lang import get_lang
+from tgbot.misc.get_type import get_type
 from tgbot.misc.states import getNumber
 from tgbot.misc.texts import phrases
 from tgbot.misc.get_action import get_action
@@ -96,6 +97,7 @@ async def user_start(callback_query: types.CallbackQuery):
 async def user_start(callback_query: types.CallbackQuery):
     userid = callback_query.from_user.id
     language = await get_lang(userid)
+    print(language)
     help_but = help_buttons(language)
     await bot.send_message(userid, phrases[language]['needy'], reply_markup=help_but.as_markup())
     await user_update.update_status(userid,'needy')
@@ -112,7 +114,8 @@ async def user_start(callback_query: types.CallbackQuery):
     userid = callback_query.from_user.id
     language = await get_lang(userid)
     help_but = help_buttons(language)
-    answer = get_action(userid)
+    answer = get_type(userid)
+    print(answer)
     if answer == 'volounter':
         await bot.send_message(userid, phrases[language]['volounter'], reply_markup=help_but.as_markup())
     else:

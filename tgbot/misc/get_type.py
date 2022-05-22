@@ -10,7 +10,7 @@ def get_type(userid):
     data = (userid,)
     cur.execute('SELECT * FROM users WHERE id = %s',data)
     user = cur.fetchone()
-    lang = user[2]
+    lang = user[3]
     base.commit()
     cur.close()
     base.close()

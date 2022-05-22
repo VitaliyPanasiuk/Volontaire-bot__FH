@@ -10,7 +10,7 @@ async def get_lang(userid):
     data = (userid,)
     cur.execute('SELECT * FROM users WHERE id = %s',data)
     user = cur.fetchone()
-    lang = user[5]
+    lang = user[2]
     base.commit()
     cur.close()
     base.close()

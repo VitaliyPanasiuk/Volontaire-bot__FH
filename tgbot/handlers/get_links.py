@@ -56,5 +56,5 @@ async def psysites(callback_query: types.CallbackQuery):
     userid = callback_query.from_user.id 
     language = await get_lang(userid)
     donate_button = donate_buttons(language)
-    await bot.send_message(userid, 'chosee', reply_markup=donate_button.as_markup()) 
+    await bot.send_message(userid, phrases[language]['liq'], reply_markup=donate_button.as_markup()) 
     
