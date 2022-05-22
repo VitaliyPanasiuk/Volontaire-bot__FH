@@ -83,7 +83,7 @@ async def user_start(callback_query: types.CallbackQuery, state = FSMContext):
         await state.set_state(getNumber.num3)  
     else:
         await user_update.update_lang(userid,'uk')
-    await bot.send_message(userid, 'Оберіть хто ви',reply_markup=type_ru.as_markup())
+    await bot.send_message(userid, 'Оберіть хто ви',reply_markup=type_uk.as_markup())
     
 @user_router.callback_query(lambda c: c.data == 'volounter')
 async def user_start(callback_query: types.CallbackQuery):
