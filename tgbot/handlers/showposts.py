@@ -5,10 +5,11 @@ from tgbot.keyboards.inline.lang import lang
 from tgbot.keyboards.inline.posts import posts_buttons
 from tgbot.keyboards.inline.type import type_en, type_ru, type_uk
 from tgbot.keyboards.inline.helpBut import help_buttons
-from tgbot.misc.texts import regions, make_post, showPost
+from tgbot.misc.texts import regions, make_post, showPost, boll_answer
 from tgbot.keyboards.text_but.region import choice_region
 from tgbot.keyboards.text_but.bool_answer import bool_answer
 from tgbot.config import load_config
+from tgbot.keyboards.inline.choice import choice_buttons
 from aiogram.utils.keyboard import ReplyKeyboardBuilder,InlineKeyboardButton,InlineKeyboardBuilder
 import aiogram.types.location
 from tgbot.db import user_update
@@ -46,7 +47,11 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
         for post in posts:
             if str(post[0]) not in user[0][6]:
                 photo = FSInputFile('tgbot/img/posts_home/'+ str(post[1]) + str(post[8]) + '.jpg')
-                await bot.send_photo(userid, photo, caption= f'{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {post[6]}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
+                if post[6] == True:
+                    b = boll_answer[language][0]
+                else:
+                    b = boll_answer[language][1]
+                await bot.send_photo(userid, photo, caption= f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -54,7 +59,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'food':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -62,7 +67,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'medical care':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -70,7 +75,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'transport':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -78,7 +83,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'kids products':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -86,7 +91,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'products for pets':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -94,7 +99,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'clothes':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}\n{post[6]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}\n{post[6]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -102,7 +107,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'essentials':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -110,7 +115,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'psychological help':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -118,7 +123,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'other':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 break
@@ -131,12 +136,13 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     user = get_acccepted(userid)
     posts = get_post(userid)
     accepted = user[0][6]
+    choice_but = choice_buttons(language,userid)
     print(accepted)
     for i in posts:
         print(accepted[-1])
         print(str(i[0]))
         if str(accepted[-1]) == str(i[0]):
-            await bot.send_message(userid,f'Phone: {i[-1]}')
+            await bot.send_message(userid,f'Phone: {i[-1]}', reply_markup=choice_but.as_markup())
 
 @show_posts_router.callback_query(lambda c: c.data == 'reject_post')
 async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
@@ -146,12 +152,13 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     posts = get_post(userid)
     post_but = posts_buttons(language)
     answer = get_action(userid)
+    choice_but = choice_buttons(language,userid)
     p = False
     if answer == 'home':
         for post in posts:
             if str(post[0]) not in user[0][6]:
                 photo = FSInputFile('tgbot/img/posts_home/'+ str(post[1]) + str(post[8]) + '.jpg')
-                await bot.send_photo(userid, photo, caption= f'{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {post[6]}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
+                await bot.send_photo(userid, photo, caption= f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {post[6]}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -160,7 +167,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'food':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -169,7 +176,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'medical care':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 p = True
                 await user_update.update_accepted(userid,postid)
@@ -178,7 +185,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'transport':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 p = True
                 await user_update.update_accepted(userid,postid)
@@ -187,7 +194,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'kids products':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -196,7 +203,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'products for pets':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -205,7 +212,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'clothes':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}\n{post[6]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}\n{post[6]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -214,7 +221,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'essentials':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -223,7 +230,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'psychological help':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
@@ -232,13 +239,14 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     elif answer == 'other':
         for post in posts:
             if str(post[0]) not in user[0][6]:
-                await bot.send_message(userid, f'{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
+                await bot.send_message(userid, f'{post[3]}\n{post[4]}\n{post[5]}', reply_markup=post_but.as_markup())
                 postid = post[0]
                 await user_update.update_accepted(userid,postid)
                 p = True
                 break
             
     if p == False:
+        await bot.send_message(userid, showPost[language][6], reply_markup=choice_but.as_markup())
         await user_update.delete_accepted(userid)
             
     

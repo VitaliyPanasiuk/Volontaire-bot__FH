@@ -5,7 +5,7 @@ from tgbot.keyboards.inline.lang import lang
 from tgbot.keyboards.inline.posts import posts_buttons
 from tgbot.keyboards.inline.type import type_en, type_ru, type_uk
 from tgbot.keyboards.inline.helpBut import help_buttons
-from tgbot.misc.texts import regions, make_post, showPost, editPost
+from tgbot.misc.texts import regions, make_post, showPost, editPost, boll_answer
 from tgbot.keyboards.text_but.region import choice_region
 from tgbot.keyboards.text_but.edit_post_but import choice_edit_action
 from tgbot.keyboards.text_but.bool_answer import bool_answer
@@ -46,62 +46,66 @@ async def edit_post(callback_query: types.CallbackQuery, state = FSMContext):
     if answer == 'home':
         for post in posts:
             if str(userid) == str(post[1]):
+                if post[6] == True:
+                    b = boll_answer[language][0]
+                else:
+                    b = boll_answer[language][1]
                 photo = FSInputFile('tgbot/img/posts_home/'+ str(post[1]) + str(post[8]) + '.jpg')
-                await bot.send_photo(userid, photo, caption= f'id:{post[0]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {post[6]}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_photo(userid, photo, caption= f'id:{post[0]}\n{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'food':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'medical care':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'transport':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'kids products':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'products for pets':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'clothes':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}\n{post[6]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}\n{post[6]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'essentials':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'psychological help':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'other':
         for post in posts:
             if str(userid) == str(post[1]):
-                await bot.send_message(userid, f'id:{post[0]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
+                await bot.send_message(userid, f'id:{post[0]}\n{post[3]}\n{post[4]}\n{post[5]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     if p == False:
