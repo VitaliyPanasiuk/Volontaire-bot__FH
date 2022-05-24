@@ -43,6 +43,7 @@ async def postgre_start():
         id serial primary key,
         userid text references users(id),
         type text,
+        geo text,
         way text,
         comment text,
         phone text

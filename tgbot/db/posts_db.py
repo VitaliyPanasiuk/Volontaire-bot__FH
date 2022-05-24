@@ -41,7 +41,7 @@ async def make_post_clothes(userid, type, geo,clotype,closize,comment,phone):
     base = psycopg2.connect(DB_URI,sslmode="require")
     cur = base.cursor()
     data = (userid, type, geo,clotype,closize,comment,phone)
-    cur.execute('INSERT INTO postclothes (userid, type, geo,clotype,closize,comment,phone)  VALUES (%s,%s,%s,%s,%s,%s,%s)', data)
+    cur.execute('INSERT INTO postsclothes (userid, type, geo,clotype,closize,comment,phone)  VALUES (%s,%s,%s,%s,%s,%s,%s)', data)
     
     base.commit()
     cur.close()
