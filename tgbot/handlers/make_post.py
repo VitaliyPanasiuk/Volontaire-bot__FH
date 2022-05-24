@@ -4,7 +4,7 @@ from aiogram.types import Message
 from tgbot.keyboards.inline.lang import lang
 from tgbot.keyboards.inline.type import type_en, type_ru, type_uk
 from tgbot.keyboards.inline.helpBut import help_buttons
-from tgbot.misc.texts import regions, make_post
+from tgbot.misc.texts import regions, make_post, las
 from tgbot.keyboards.text_but.region import choice_region
 from tgbot.keyboards.text_but.bool_answer import bool_answer
 from tgbot.config import load_config
@@ -90,11 +90,11 @@ async def get_geo(message: types.Message, state = FSMContext):
     type_user = get_type(userid)
     geo_buttons = ReplyKeyboardBuilder()
     geo_buttons.row(
-        types.KeyboardButton(text="Send geo",request_location=True)
+        types.KeyboardButton(text=las[lang][0],request_location=True)
     )
     print(message.text)
-    if message.text == 'Запросить геолокацию':
-        await bot.send_message(userid,'Отправьте геолокацию',reply_markup=geo_buttons.as_markup(resize_keyboard=True))
+    if message.text == 'Запросить геолокацию' or message.text == 'Request geolocation' or message.text == 'Запросити геолокацію':
+        await bot.send_message(userid,las[lang][1],reply_markup=geo_buttons.as_markup(resize_keyboard=True))
         await state.set_state(MakePost.geo2)
     else:
         await state.update_data(geo=message.text)

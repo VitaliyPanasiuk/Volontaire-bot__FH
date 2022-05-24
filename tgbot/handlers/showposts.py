@@ -5,7 +5,7 @@ from tgbot.keyboards.inline.lang import lang
 from tgbot.keyboards.inline.posts import posts_buttons
 from tgbot.keyboards.inline.type import type_en, type_ru, type_uk
 from tgbot.keyboards.inline.helpBut import help_buttons
-from tgbot.misc.texts import regions, make_post, showPost, boll_answer, p
+from tgbot.misc.texts import regions, make_post, showPost, boll_answer, p, las
 from tgbot.keyboards.text_but.region import choice_region
 from tgbot.keyboards.text_but.bool_answer import bool_answer
 from tgbot.config import load_config
