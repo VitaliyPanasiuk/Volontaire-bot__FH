@@ -55,7 +55,7 @@ async def edit_post(callback_query: types.CallbackQuery, state = FSMContext):
                 if str(post[2]) == 'volounter':
                     await bot.send_photo(userid, photo, caption= f'id:{post[0]}\n{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
                 else:
-                    await bot.send_message(userid,f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
+                    await bot.send_message(userid,f'id:{post[0]}{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
             
     elif answer == 'food':
