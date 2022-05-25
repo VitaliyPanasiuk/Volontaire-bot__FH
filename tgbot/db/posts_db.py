@@ -10,8 +10,17 @@ async def make_post_home(userid, type, geo,amountbed,timeforlive,pets,comment,im
     base = psycopg2.connect(DB_URI,sslmode="require")
     cur = base.cursor()
     data = (userid, type, geo,amountbed,timeforlive,pets,comment,img,phone,)
-    print(data)
     cur.execute('INSERT INTO postshome (userid, type, geo,amountbed,timeforlive,pets,comment,img,phone)  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)', data)
+    
+    base.commit()
+    cur.close()
+    base.close()
+    
+async def make_post_home_needy(userid, type, geo,amountbed,timeforlive,pets,comment,phone):
+    base = psycopg2.connect(DB_URI,sslmode="require")
+    cur = base.cursor()
+    data = (userid, type, geo,amountbed,timeforlive,pets,comment,phone,)
+    cur.execute('INSERT INTO postshome (userid, type, geo,amountbed,timeforlive,pets,comment,phone)  VALUES (%s,%s,%s,%s,%s,%s,%s,%s)', data)
     
     base.commit()
     cur.close()

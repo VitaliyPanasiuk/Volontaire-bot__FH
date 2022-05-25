@@ -1,7 +1,7 @@
 from aiogram import Router
 from aiogram import Bot, types
 from aiogram.types import Message
-from tgbot.keyboards.inline.lang import lang, phone
+from tgbot.keyboards.inline.lang import lang, send_phone
 from tgbot.keyboards.inline.type import type_en, type_ru, type_uk
 from tgbot.keyboards.inline.helpBut import help_buttons
 from tgbot.config import load_config
@@ -32,6 +32,7 @@ async def user_start(callback_query: types.CallbackQuery, state = FSMContext):
     userid = callback_query.from_user.id
     await bot.send_message(userid, 'Выбран русский язык')
     auf_statuss = await auf_status(userid)
+    phone = send_phone('ru')
     if auf_statuss == False:
         await bot.send_message(userid, 'Отправьте свой номер телефона', reply_markup=phone.as_markup(resize_keyboard=True))
         await state.set_state(getNumber.num)
@@ -39,51 +40,32 @@ async def user_start(callback_query: types.CallbackQuery, state = FSMContext):
         await user_update.update_lang(userid,'ru')
         await bot.send_message(userid, 'Выбебрите пожалуйста кто вы',reply_markup=type_ru.as_markup())
     
-@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num)
-async def contacts(msg: types.Message, state: FSMContext):
-    userid = msg.from_user.id
-    await user_update.reg_user(userid,userid,'ru',str(msg.contact.phone_number))
-    await state.clear() 
-    await bot.send_message(userid, 'Выбебрите пожалуйста кто вы',reply_markup=type_ru.as_markup())
-    
-@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num2)
-async def contacts(msg: types.Message, state: FSMContext):
-    userid = msg.from_user.id
-    await user_update.reg_user(userid,userid,'en',str(msg.contact.phone_number))
-    await state.clear() 
-    await bot.send_message(userid, 'Select who are you',reply_markup=type_ru.as_markup())
-    
-@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num3)
-async def contacts(msg: types.Message, state: FSMContext):
-    userid = msg.from_user.id
-    await user_update.reg_user(userid,userid,'uk',str(msg.contact.phone_number))
-    await state.clear() 
-    await bot.send_message(userid, 'Вибебріть будь ласка хто ви',reply_markup=type_ru.as_markup())
-       
-    
+
 @user_router.callback_query(lambda c: c.data == 'en')
 async def user_start(callback_query: types.CallbackQuery, state = FSMContext):
     userid = callback_query.from_user.id
     await bot.send_message(userid, 'Selected English')
     auf_statuss = await auf_status(userid)
+    phone = send_phone('en')
     if auf_statuss == False:
         await bot.send_message(userid, 'Send your mobile phone', reply_markup=phone.as_markup(resize_keyboard=True))
         await state.set_state(getNumber.num2)     
     else:
         await user_update.update_lang(userid,'en')
-    await bot.send_message(callback_query.from_user.id, 'Select please hwo are you',reply_markup=type_en.as_markup())
+        await bot.send_message(callback_query.from_user.id, 'Select please hwo are you',reply_markup=type_en.as_markup())
     
 @user_router.callback_query(lambda c: c.data == 'uk')
 async def user_start(callback_query: types.CallbackQuery, state = FSMContext):
     userid = callback_query.from_user.id
     await bot.send_message(userid, 'Обрана укрїнська мова')
     auf_statuss = await auf_status(userid)
+    phone = send_phone('uk')
     if auf_statuss == False:
-        await bot.send_message(userid, 'Send your mobile phone', reply_markup=phone.as_markup(resize_keyboard=True))
+        await bot.send_message(userid, 'Надішліть свій мобільний телефон', reply_markup=phone.as_markup(resize_keyboard=True))
         await state.set_state(getNumber.num3)  
     else:
         await user_update.update_lang(userid,'uk')
-    await bot.send_message(userid, 'Оберіть хто ви',reply_markup=type_uk.as_markup())
+        await bot.send_message(userid, 'Оберіть хто ви',reply_markup=type_uk.as_markup())
     
 @user_router.callback_query(lambda c: c.data == 'volounter')
 async def user_start(callback_query: types.CallbackQuery):
@@ -121,3 +103,24 @@ async def user_start(callback_query: types.CallbackQuery):
     else:
         await bot.send_message(userid, phrases[language]['needy'], reply_markup=help_but.as_markup())
 
+
+@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num)
+async def contacts(msg: types.Message, state: FSMContext):
+    userid = msg.from_user.id
+    await user_update.reg_user(userid,userid,'ru',str(msg.contact.phone_number))
+    await state.clear() 
+    await bot.send_message(userid, 'Выберите пожалуйста кто вы',reply_markup=type_ru.as_markup())
+    
+@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num2)
+async def contacts(msg: types.Message, state: FSMContext):
+    userid = msg.from_user.id
+    await user_update.reg_user(userid,userid,'en',str(msg.contact.phone_number))
+    await state.clear() 
+    await bot.send_message(userid, 'Select who are you',reply_markup=type_ru.as_markup())
+    
+@user_router.message_handler(content_types=types.ContentType.CONTACT, state=getNumber.num3)
+async def contacts(msg: types.Message, state: FSMContext):
+    userid = msg.from_user.id
+    await user_update.reg_user(userid,userid,'uk',str(msg.contact.phone_number))
+    await state.clear() 
+    await bot.send_message(userid, 'Виберіть будь ласка хто ви',reply_markup=type_ru.as_markup())

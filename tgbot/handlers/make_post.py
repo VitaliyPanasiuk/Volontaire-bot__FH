@@ -303,15 +303,19 @@ async def get_time(message: types.Message, state = FSMContext):
 async def get_pets(message: types.Message, state = FSMContext):
     userid = message.from_user.id
     language = await get_lang(userid)
+    type_user = get_type(userid)
     if message.text == 'Да' or message.text == 'Yes' or message.text == 'Так':
         answ = True
     else:
         answ = False
     await state.update_data(pets=answ)
-    await bot.send_message(userid,make_post[language][5],reply_markup=types.ReplyKeyboardRemove())
-    print(make_post[language][5])
-    await state.set_state(MakePost.photo)
     
+    if type_user == 'volounter':
+        await bot.send_message(userid,make_post[language][5],reply_markup=types.ReplyKeyboardRemove())
+        await state.set_state(MakePost.photo)
+    else:
+        await bot.send_message(userid,make_post[language][6],reply_markup=types.ReplyKeyboardRemove())
+        await state.set_state(MakePost.comment)
 
 
 @make_post_router.message(content_types=['photo'], state = MakePost.photo)
@@ -334,13 +338,17 @@ async def get_comment(msg: types.Message, state = FSMContext):
     userid = msg.from_user.id
     answer = get_action(userid)
     lang = await get_lang(userid)
+    type_user = get_type(userid)
     await state.update_data(comment = msg.text)
     phone = get_phone(userid)
     help_but = help_buttons(lang)
     if answer == 'home':
         type = get_type(userid)
         user_data = await state.get_data()
-        await posts_db.make_post_home(userid,type,user_data['geo'],user_data['amountbed'],user_data['time_for_live'],user_data['pets'],user_data['comment'],user_data['photo'],phone)
+        if type_user == 'volounter':
+            await posts_db.make_post_home(userid,type,user_data['geo'],user_data['amountbed'],user_data['time_for_live'],user_data['pets'],user_data['comment'],user_data['photo'],phone)
+        else:
+            await posts_db.make_post_home_needy(userid,type,user_data['geo'],user_data['amountbed'],user_data['time_for_live'],user_data['pets'],user_data['comment'],phone)
         await bot.send_message(userid,make_post[lang][7], reply_markup=help_but.as_markup()) 
         await state.clear()
     elif answer == 'food':

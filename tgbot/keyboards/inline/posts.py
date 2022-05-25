@@ -12,7 +12,7 @@ def posts_buttons(lang):
         callback_data='confirm_post')
     )
     posts_buttons.add(types.InlineKeyboardButton(
-            text=showPost[lang][5],
+            text="▶",
             callback_data='reject_post')
         )
     return posts_buttons

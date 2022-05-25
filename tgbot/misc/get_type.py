@@ -16,3 +16,4 @@ def get_type(userid):
     base.close()
     
     return lang
+
