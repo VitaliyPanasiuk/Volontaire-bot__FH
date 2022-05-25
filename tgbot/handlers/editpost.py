@@ -53,7 +53,7 @@ async def edit_post(callback_query: types.CallbackQuery, state = FSMContext):
                     b = boll_answer[language][1]
                 photo = FSInputFile('tgbot/img/posts_home/'+ str(post[1]) + str(post[8]) + '.jpg')
                 if str(post[2]) == 'volounter':
-                    await bot.send_photo(userid, photo, caption= f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
+                    await bot.send_photo(userid, photo, caption= f'id:{post[0]}\n{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
                 else:
                     await bot.send_message(userid,f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=types.ReplyKeyboardRemove())
                 p = True
@@ -323,7 +323,7 @@ async def get_time(message: types.Message, state = FSMContext):
     type_user = get_type(userid)
     language = await get_lang(userid)
     await state.update_data(time_for_live=message.text)
-    bool_answers = bool_answer(lang)
+    bool_answers = bool_answer(language)
     if type_user == 'volounter':
         await bot.send_message(userid,make_post[language][4],reply_markup=bool_answers.as_markup(resize_keyboard=True))
     else:
@@ -343,7 +343,7 @@ async def get_pets(message: types.Message, state = FSMContext):
     else:
         answ = False
     await state.update_data(pets=answ)
-    await bot.send_message(userid,make_post[language][5],reply_markup=types.ReplyKeyboardRemove())
+    await bot.send_message(userid,make_post[language][6],reply_markup=types.ReplyKeyboardRemove())
     await state.set_state(redactPost.comment) 
     
 @edit_post_router.message(state = redactPost.comment)
