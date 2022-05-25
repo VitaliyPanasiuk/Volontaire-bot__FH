@@ -165,6 +165,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
     if answer == 'home':
         for post in posts:
                 if str(post[0]) not in user[0][6]:
+                    postid = post[0]
                     p = True
                     photo = FSInputFile('tgbot/img/posts_home/'+ str(post[1]) + str(post[8]) + '.jpg')
                     if post[6] == True:
