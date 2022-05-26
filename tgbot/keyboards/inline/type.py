@@ -4,8 +4,8 @@ from aiogram import Bot, types
 
 type_en = InlineKeyboardBuilder()
 type_en.add(types.InlineKeyboardButton(
-    text="volounter",
-    callback_data="volounter")
+    text="volunteer",
+    callback_data="volunteer")
 )
 type_en.add(types.InlineKeyboardButton(
     text="needy",
@@ -15,7 +15,7 @@ type_en.add(types.InlineKeyboardButton(
 type_ru = InlineKeyboardBuilder()
 type_ru.add(types.InlineKeyboardButton(
     text="волонтёр",
-    callback_data="volounter")
+    callback_data="volunteer")
 )
 type_ru.add(types.InlineKeyboardButton(
     text="нуждающийся",
@@ -25,7 +25,7 @@ type_ru.add(types.InlineKeyboardButton(
 type_uk = InlineKeyboardBuilder()
 type_uk.add(types.InlineKeyboardButton(
     text="волонтер",
-    callback_data="volounter")
+    callback_data="volunteer")
 )
 type_uk.add(types.InlineKeyboardButton(
     text="потребуючий",

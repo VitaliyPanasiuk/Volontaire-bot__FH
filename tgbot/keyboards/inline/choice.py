@@ -10,7 +10,7 @@ from tgbot.misc.texts import phrases, buttons_neddy
 def choice_buttons_home(lang,userid):
     answer = get_type(userid)
     action = get_action(userid)
-    if answer == 'volounter':
+    if answer == 'volunteer':
         choice_buttons = InlineKeyboardBuilder()
         keys = [*phrases[lang]][15:19]
         k = 0
@@ -50,7 +50,7 @@ def choice_buttons(lang,userid):
     action = get_action(userid)
     print(answer)
     choice_buttons = InlineKeyboardBuilder()
-    if answer == 'volounter':
+    if answer == 'volunteer':
         
         keys = [*phrases[lang]][15:18]
         k = 0

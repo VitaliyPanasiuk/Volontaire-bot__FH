@@ -53,7 +53,7 @@ async def show_posts(callback_query: types.CallbackQuery, state = FSMContext):
                         b = boll_answer[language][0]
                     else:
                         b = boll_answer[language][1]
-                    if str(post[2]) == 'volounter':
+                    if str(post[2]) == 'volunteer':
                         await bot.send_photo(userid, photo, caption= f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
                     else:
                         await bot.send_message(userid,f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
@@ -172,7 +172,7 @@ async def confirm_post(callback_query: types.CallbackQuery, state = FSMContext):
                         b = boll_answer[language][0]
                     else:
                         b = boll_answer[language][1]
-                    if str(post[2]) == 'volounter':
+                    if str(post[2]) == 'volunteer':
                         await bot.send_photo(userid, photo, caption= f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())
                     else:
                         await bot.send_message(userid,f'{post[3]}\n{showPost[language][0]} {post[4]}\n{showPost[language][1]} {post[5]}\n{showPost[language][2]} {b}\n{showPost[language][3]} {post[7]}', reply_markup=post_but.as_markup())

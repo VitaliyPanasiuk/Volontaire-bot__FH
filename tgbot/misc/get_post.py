@@ -11,10 +11,10 @@ def get_post(userid):
     userid = str(userid)
     action = get_action(userid)
     types = str(get_type(userid))
-    if types == 'volounter':
+    if types == 'volunteer':
         types = 'needy'
     elif types == 'needy':
-        types = 'volounter'
+        types = 'volunteer'
     if action == 'home':
         action_name = 'postshome'
     elif action == 'food':
